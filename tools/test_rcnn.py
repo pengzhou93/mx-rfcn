@@ -7,7 +7,7 @@ from rcnn.config import config
 from rcnn.loader import ROIIter
 from rcnn.detector import Detector
 from rcnn.symbol import get_vgg_test, get_vgg_rcnn_test
-from rcnn.resnext import 
+from rcnn.resnext import resnext_101
 from rcnn.tester import pred_eval
 from utils.load_data import load_gt_roidb, load_test_ss_roidb, load_test_rpn_roidb
 from utils.load_model import load_param
@@ -17,7 +17,11 @@ def test_rcnn(imageset, year, root_path, devkit_path, prefix, epoch, ctx, vis=Fa
               end2end=False):
     # load symbol and testing data
     if has_rpn:
-        sym = get_vgg_test()
+        # sym = get_vgg_test()
+        config.TRAIN.AGNOSTIC = True
+        config.END2END = 1
+        config.PIXEL_MEANS = np.array([[[0,0,0]]])
+        sym = resnext_101(num_class=21)
         config.TEST.HAS_RPN = True
         config.TEST.RPN_PRE_NMS_TOP_N = 6000
         config.TEST.RPN_POST_NMS_TOP_N = 300
