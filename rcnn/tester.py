@@ -50,7 +50,10 @@ def pred_eval(detector, test_data, imdb, vis=False):
         for j in range(1, imdb.num_classes):
             indexes = np.where(scores[:, j] > thresh)[0]
             cls_scores = scores[indexes, j]
-            cls_boxes = boxes[indexes, j * 4:(j + 1) * 4] / scale
+            if config.TRAIN.AGNOSTIC: 
+                cls_boxes = boxes[indexes, 4:8] / scale
+            else:
+                cls_boxes = boxes[indexes, j * 4:(j + 1) * 4] / scale
             cls_dets = np.hstack((cls_boxes, cls_scores[:, np.newaxis]))
             keep = nms(cls_dets, config.TEST.NMS)
             all_boxes[j][i] = cls_dets[keep, :]
