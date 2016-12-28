@@ -51,6 +51,7 @@ and Fast R-CNN. Fast R-CNN weights are used to initiate RPN for training.
 * Start testing by run `python test.py` after completing the training process.
   A typical command would be `python test.py --has_rpn --prefix model/faster-resnext-101 --epoch 8`. This will test the network on the VOC07 test.
   Adding a `--vis` will turn on visualization and `-h` will show help as in the training process.
+* An experiment yields 72.32 mAP, while VGG based Faster-RCNN yields 66.5 mAP.
   
 ## Training and Testing Faster-RCNN
 * Install additional python package `scipy`.
