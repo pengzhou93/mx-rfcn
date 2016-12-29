@@ -65,7 +65,7 @@ def convert_context(params, ctx):
     return new_params
 
 
-def load_param_rcnn(prefix, epoch, convert=False, ctx=None):
+def load_param(prefix, epoch, convert=False, ctx=None):
     """
     wrapper for load checkpoint
     :param prefix: Prefix of model name.
@@ -94,7 +94,7 @@ def load_param_rcnn(prefix, epoch, convert=False, ctx=None):
     return arg_params, aux_params, num_classes
 
 
-def load_param(prefix, epoch, convert=False, ctx=None):
+def load_param_infer(prefix, epoch, convert=False, ctx=None):
     """
     wrapper for load checkpoint
     :param prefix: Prefix of model name.
