@@ -12,12 +12,12 @@ from rcnn.symbol import get_vgg_test
 from rcnn.resnext import *
 from rcnn.resnet import *
 from rcnn.tester import vis_all_detection, save_all_detection
-from utils.load_model import load_param
+from utils.load_model import load_param_rfcn
 
 
 def get_net(prefix, epoch, ctx):
     config.TRAIN.AGNOSTIC = True
-    args, auxs, num_class = load_param(prefix, epoch, convert=True, ctx=ctx)
+    args, auxs, num_class = load_param_rfcn(prefix, epoch, convert=True, ctx=ctx)
     sym = resnext_101(num_class=num_class)
     #sym = resnet_50(num_class=num_class)
     detector = Detector(sym, ctx, args, auxs)

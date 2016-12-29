@@ -10,7 +10,7 @@ from rcnn.symbol import get_vgg_test, get_vgg_rcnn_test
 from rcnn.resnext import resnext_101
 from rcnn.tester import pred_eval
 from utils.load_data import load_gt_roidb, load_test_ss_roidb, load_test_rpn_roidb
-from utils.load_model import load_param
+from utils.load_model import load_param_rfcn
 
 
 def test_rcnn(imageset, year, root_path, devkit_path, prefix, epoch, ctx, vis=False, has_rpn=True, proposal='rpn',
@@ -34,7 +34,7 @@ def test_rcnn(imageset, year, root_path, devkit_path, prefix, epoch, ctx, vis=Fa
     test_data = ROIIter(roidb, batch_size=1, shuffle=False, mode='test')
 
     # load model
-    args, auxs, _ = load_param(prefix, epoch, convert=True, ctx=ctx)
+    args, auxs, _ = load_param_rfcn(prefix, epoch, convert=True, ctx=ctx)
 
     # detect
     detector = Detector(sym, ctx, args, auxs)
