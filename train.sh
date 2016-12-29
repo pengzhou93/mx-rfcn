@@ -1,3 +1,0 @@
-export MXNET_ENGINE_TYPE=NaiveEngine
-
-python train_end2end_resnext.py
