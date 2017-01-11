@@ -271,7 +271,7 @@ def resnext_rfcn(units, num_stage, filter_list, num_class=2, num_anchor=12, bott
     conv_new_1 = mx.sym.Activation(data=conv_new_1, act_type='relu', name='conv_new_1_relu1')
 
     rfcn_bbox = mx.sym.Convolution(data=conv_new_1, num_filter=392, kernel=(1, 1), stride=(1, 1), pad=(0, 0), name="rfcn_bbox")
-    rfcn_cls = mx.sym.Convolution(data=conv_new_1, num_filter=1029, kernel=(1, 1), stride=(1, 1), pad=(0, 0), name="rfcn_cls")
+    rfcn_cls = mx.sym.Convolution(data=conv_new_1, num_filter=7*7*num_class, kernel=(1, 1), stride=(1, 1), pad=(0, 0), name="rfcn_cls")
 
     if is_train:
         psroipooled_loc_rois = mx.symbol.PSROIPooling(name='psroipooled_loc_rois', data=rfcn_bbox, rois=rois[0], group_size=7, output_dim=8, spatial_scale=0.0625)
