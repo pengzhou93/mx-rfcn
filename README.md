@@ -78,10 +78,10 @@ and Fast R-CNN. Fast R-CNN weights are used to initiate RPN for training.
 * Start testing by running `python -m tools.test_rcnn --proposal ss`.
 
 ## Information
+* Download link to rfcn-resnext101 model
+  Onedrive: https://1drv.ms/u/s!Aqd-q_R495LrljchqMVhnv5ubF2O symbol：https://1drv.ms/u/s!Aqd-q_R495LrljY3o_udXofNNmiw
 * Download link to faster-rcnn model
   Baidu Yun: http://pan.baidu.com/s/1boRhGvH (ixiw) or Dropbox: https://www.dropbox.com/s/jrr83q0ai2ckltq/final-0000.params.tar.gz?dl=0
-* Download link to r-fcn-resnext101 model
-  Onedrive: https://1drv.ms/u/s!Aqd-q_R495LrljchqMVhnv5ubF2O symbol：https://1drv.ms/u/s!Aqd-q_R495LrljY3o_udXofNNmiw
 * Download link to Pascal VOC and precomputed selective search proposals
 
   ```
