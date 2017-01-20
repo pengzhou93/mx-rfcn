@@ -280,9 +280,9 @@ def resnext_rfcn(units, num_stage, filter_list, num_class=2, num_anchor=12, bott
     bbox_pred = mx.symbol.Pooling(data=psroipooled_loc_rois, kernel=(7, 7), stride=(7, 7), pool_type='avg', name='ave_bbox_pred_rois')
 
     if is_train:
-        psroipooled_cls_rois = mx.symbol.PSROIPooling(name='psroipooled_cls_rois', data=rfcn_cls, rois=rois[0], group_size=7, output_dim=21, spatial_scale=0.0625)
+        psroipooled_cls_rois = mx.symbol.PSROIPooling(name='psroipooled_cls_rois', data=rfcn_cls, rois=rois[0], group_size=7, output_dim=num_class, spatial_scale=0.0625)
     else:
-        psroipooled_cls_rois = mx.symbol.PSROIPooling(name='psroipooled_cls_rois', data=rfcn_cls, rois=rpn_roi, group_size=7, output_dim=21, spatial_scale=0.0625)
+        psroipooled_cls_rois = mx.symbol.PSROIPooling(name='psroipooled_cls_rois', data=rfcn_cls, rois=rpn_roi, group_size=7, output_dim=num_class, spatial_scale=0.0625)
     cls_score = mx.symbol.Pooling(data=psroipooled_cls_rois, kernel=(7, 7), stride=(7, 7), pool_type='avg', name='ave_cls_score_rois')
 
     # cls
